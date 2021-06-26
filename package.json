@@ -2,7 +2,10 @@
   "name": "lerna-changelog",
   "description": "Generate a changelog for a lerna monorepo",
   "version": "1.0.1",
-  "author": "Bo Borgerson <gigabo@gmail.com>",
+  "author": {
+    "name": "kazuya kawaguchi",
+    "email": "kawakazu80@gmail.com"
+  },
   "bin": {
     "lerna-changelog": "./bin/cli.js"
   },
