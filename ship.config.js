@@ -19,8 +19,8 @@ function extractSpecificChangelog(changelog, version) {
 }
 
 async function commitChangelog(current, next) {
-  const { stdout } = await execa('node', [
-    './bin/cli.js',
+  const { stdout } = await execa('npx', [
+    'lerna-changelog',
     '--next-version',
     `v${next}`
   ])
