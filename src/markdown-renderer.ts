@@ -23,7 +23,7 @@ export default class MarkdownRenderer {
   }
 
   public renderMarkdown(releases: Release[]) {
-    let output = releases
+    const output = releases
       .map(release => this.renderRelease(release))
       .filter(Boolean)
       .join('\n\n\n')
@@ -96,10 +96,7 @@ export default class MarkdownRenderer {
       : 'Other'
   }
 
-  public renderContributionList(
-    commits: CommitInfo[],
-    prefix: string = ''
-  ): string {
+  public renderContributionList(commits: CommitInfo[], prefix = ''): string {
     return commits
       .map(commit => this.renderContribution(commit))
       .filter(Boolean)
@@ -159,7 +156,7 @@ export default class MarkdownRenderer {
     return this.options.categories.map(name => {
       // Keep only the commits that have a matching label with the one
       // provided in the lerna.json config.
-      let commits = allCommits.filter(
+      const commits = allCommits.filter(
         commit => commit.categories && commit.categories.indexOf(name) !== -1
       )
 

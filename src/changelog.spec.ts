@@ -18,7 +18,7 @@ describe('Changelog', () => {
       ['packages/@foo/bar/baz.js', '@foo/bar']
     ]
 
-    for (let [input, expected] of TESTS) {
+    for (const [input, expected] of TESTS) {
       it(`${input} -> ${expected}`, () => {
         const changelog = new MockedChangelog()
         expect(changelog.packageFromPath(input)).toEqual(expected)

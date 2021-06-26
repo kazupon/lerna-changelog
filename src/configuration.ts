@@ -21,8 +21,8 @@ export interface ConfigLoaderOptions {
 }
 
 export function load(options: ConfigLoaderOptions = {}): Configuration {
-  let cwd = process.cwd()
-  let rootPath = execa.sync('git', ['rev-parse', '--show-toplevel'], {
+  const cwd = process.cwd()
+  const rootPath = execa.sync('git', ['rev-parse', '--show-toplevel'], {
     cwd
   }).stdout
 
@@ -34,10 +34,10 @@ export function fromPath(
   options: ConfigLoaderOptions = {}
 ): Configuration {
   // Step 1: load partial config from `package.json` or `lerna.json`
-  let config = fromPackageConfig(rootPath) || fromLernaConfig(rootPath) || {}
+  const config = fromPackageConfig(rootPath) || fromLernaConfig(rootPath) || {}
 
   // Step 2: fill partial config with defaults
-  let { repo, nextVersion, labels, cacheDir, ignoreCommitters } = config
+  let { repo, nextVersion, labels, cacheDir, ignoreCommitters } = config // eslint-disable-line prefer-const
 
   if (!repo) {
     repo = findRepo(rootPath)

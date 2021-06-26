@@ -63,13 +63,13 @@ export async function run() {
     .wrap(Math.min(100, yargs.terminalWidth()))
     .parse()
 
-  let options = {
+  const options = {
     tagFrom: argv['from'] || argv['tag-from'],
     tagTo: argv['to'] || argv['tag-to']
   }
 
   try {
-    let config = loadConfig({
+    const config = loadConfig({
       nextVersionFromMetadata: argv['next-version-from-metadata']
     })
 
@@ -81,9 +81,9 @@ export async function run() {
       config.package = argv['package']
     }
 
-    let result = await new Changelog(config).createMarkdown(options)
+    const result = await new Changelog(config).createMarkdown(options)
 
-    let highlighted = highlight(result, {
+    const highlighted = highlight(result, {
       language: 'Markdown',
       theme: {
         section: chalk.bold,

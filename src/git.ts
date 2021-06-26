@@ -49,7 +49,7 @@ export function parseLogMessage(commit: string): CommitListItem | null {
   }
 }
 
-export function listCommits(from: string, to: string = ''): CommitListItem[] {
+export function listCommits(from: string, to = ''): CommitListItem[] {
   // Prints "hash<short-hash> ref<ref-name> message<summary> date<date>"
   // This format is used in `getCommitInfos` for easily analize the commit.
   return execa

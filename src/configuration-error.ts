@@ -1,10 +1,7 @@
-export default class ConfigurationError {
+export default class ConfigurationError extends Error {
   public name = 'ConfigurationError'
-  public message: string
 
   constructor(message: string) {
-    // @ts-ignore
-    Error.apply(this, arguments)
-    this.message = message
+    super(message)
   }
 }

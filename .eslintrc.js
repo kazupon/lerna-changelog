@@ -1,22 +1,29 @@
+'use strict'
+
 module.exports = {
+  root: true,
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly'
+  },
   env: {
-    es6: true,
     node: true,
+    jest: true
   },
   extends: [
-    "plugin:@typescript-eslint/eslint-recommended",
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended",
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:prettier/recommended',
+    'prettier'
   ],
-  globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly",
-  },
-  parser: "@typescript-eslint/parser",
+  plugins: ['@typescript-eslint'],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: "module",
+    sourceType: 'module'
   },
-  plugins: ["@typescript-eslint"],
-  rules: {},
-};
+  rules: {
+    'object-curly-spacing': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off'
+  }
+}

@@ -70,7 +70,7 @@ export default class Changelog {
     const commits = await this.getCommitInfos(from, to)
 
     // Step 6: Group commits by release (local)
-    let releases = this.groupByRelease(commits)
+    const releases = this.groupByRelease(commits)
 
     // Step 7: Compile list of committers in release (local + remote)
     await this.fillInContributors(releases)
@@ -186,7 +186,7 @@ export default class Changelog {
     // Analyze the commits and group them by tag.
     // This is useful to generate multiple release logs in case there are
     // multiple release tags.
-    let releaseMap: ReleaseMap = {}
+    const releaseMap: ReleaseMap = {}
 
     let currentTags = [UNRELEASED_TAG]
     for (const commit of commits) {
@@ -219,7 +219,8 @@ export default class Changelog {
     // referencing them.
     for (const currentTag of tags) {
       if (!releaseMap[currentTag]) {
-        let date = currentTag === UNRELEASED_TAG ? this.getToday() : commit.date
+        const date =
+          currentTag === UNRELEASED_TAG ? this.getToday() : commit.date
         releaseMap[currentTag] = { name: currentTag, date, commits: [] }
       }
 
