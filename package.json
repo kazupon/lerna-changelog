@@ -1,5 +1,5 @@
 {
-  "name": "lerna-changelog",
+  "name": "@kazupon/lerna-changelog",
   "description": "Generate a changelog for a lerna monorepo",
   "version": "1.0.1",
   "author": {

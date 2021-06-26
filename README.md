@@ -14,17 +14,17 @@ PR-based changelog generator with monorepo support
 Install with `yarn`:
 
 ```bash
-yarn add lerna-changelog --dev
+yarn add @kazupon/lerna-changelog --dev
 # or globally
-yarn global add lerna-changelog
+yarn global add @kazupon/lerna-changelog
 ```
 
 We're using `yarn` but you can use `npm` if you like:
 
 ```bash
-npm install --save-dev lerna-changelog
+npm install --save-dev @kazupon/lerna-changelog
 # or globally
-npm install --global lerna-changelog
+npm install --global @kazupon/lerna-changelog
 ```
 
 ## :rocket: Usage
