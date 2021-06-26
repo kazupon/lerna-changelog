@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
-"use strict";
+'use strict'
 
-var cli = require("../lib/cli");
+const cli = require('../lib/cli')
 
-cli.run();
+cli.run().catch(err => {
+  console.error(err)
+})

@@ -6,71 +6,59 @@
     "name": "kazuya kawaguchi",
     "email": "kawakazu80@gmail.com"
   },
-  "homepage": "https://github.com/kazupon/lerna-changelog#readme",
-  "bugs": {
-    "url": "https://github.com/kazupon/lerna-changelog/issues"
-  },
-  "license": "MIT",
-  "main": "index.js",
   "bin": {
     "lerna-changelog": "./bin/cli.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kazupon/lerna-changelog.git"
-  },
-  "scripts": {
-    "build": "npm run clean && tsc",
-    "changelog": "node ./bin/cli.js",
-    "clean": "rimraf lib",
-    "fix": "npm run lint -- --fix",
-    "lint": "eslint src --ext ts --format stylish",
-    "prepublish": "npm run build",
-    "prettier": "prettier --write 'src/**/*.ts'",
-    "test": "jest",
-    "test-ci": "npm run build && jest",
-    "watch": "npm run build -- --watch"
-  },
-  "dependencies": {
-    "chalk": "^2.4.1",
-    "cli-highlight": "^2.1.4",
-    "execa": "^1.0.0",
-    "make-fetch-happen": "^7.1.1",
-    "normalize-git-url": "^3.0.2",
-    "p-map": "^3.0.0",
-    "progress": "^2.0.0",
-    "yargs": "^13.0.0"
-  },
-  "devDependencies": {
-    "@types/jest": "^24.9.1",
-    "@types/node": "^12.12.21",
-    "@typescript-eslint/eslint-plugin": "^2.21.0",
-    "@typescript-eslint/parser": "^2.21.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "fs-extra": "^8.1.0",
-    "jest": "^25.1.0",
-    "jest-runner-eslint": "^0.7.6",
-    "prettier": "1.19.1",
-    "rimraf": "^3.0.2",
-    "ts-jest": "^25.2.1",
-    "typescript": "^3.8.3"
-  },
-  "engines": {
-    "node": "10.* || >= 12"
+  "bugs": {
+    "url": "https://github.com/kazupon/lerna-changelog/issues"
   },
   "changelog": {
-    "repo": "lerna/lerna-changelog",
     "labels": {
-      "breaking": ":boom: Breaking Change",
-      "enhancement": ":rocket: Enhancement",
-      "bug": ":bug: Bug Fix",
-      "documentation": ":memo: Documentation",
-      "internal": ":house: Internal"
-    },
-    "cacheDir": ".changelog"
+      "Type: Feature": ":star: Features",
+      "Type: Bug": ":bug: Bug Fixes",
+      "Type: Security": ":lock: Security Fixes",
+      "Type: Performance": ":chart_with_upwards_trend: Performance Fixes",
+      "Type: Improvement": ":zap: Improvement Features",
+      "Type: Breaking": ":boom: Breaking Change",
+      "Type: Deprecated": ":warning: Deprecated Features",
+      "Type: I18n": ":globe_with_meridians: Internationalization",
+      "Type: A11y": ":wheelchair: Accessibility",
+      "Type: Documentation": ":pencil: Documentation"
+    }
   },
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "cli-highlight": "^2.1.11",
+    "execa": "^5.1.1",
+    "hosted-git-info": "^4.0.2",
+    "make-fetch-happen": "^7.1.1",
+    "p-map": "^3.0.0",
+    "progress": "^2.0.0",
+    "yargs": "^17.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.12.4",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "fs-extra": "^8.1.0",
+    "jest": "^27.0.5",
+    "lerna-changelog": "^1.0.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.3.2",
+    "rimraf": "^3.0.2",
+    "shipjs": "^0.23.3",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.4",
+    "typescript-eslint-language-service": "^4.1.4"
+  },
+  "engines": {
+    "node": ">= 12"
+  },
+  "homepage": "https://github.com/kazupon/lerna-changelog#readme",
   "jest": {
     "projects": [
       {
@@ -79,26 +67,36 @@
           "src"
         ],
         "preset": "ts-jest"
-      },
-      {
-        "displayName": "lint",
-        "runner": "jest-runner-eslint",
-        "moduleFileExtensions": [
-          "ts"
-        ],
-        "testMatch": [
-          "<rootDir>/src/**/*.ts"
-        ]
       }
     ]
   },
+  "keywords": [
+    "changelog",
+    "lerna"
+  ],
   "publishConfig": {
     "access": "public"
   },
-  "prettier": {
-    "printWidth": 120,
-    "tabWidth": 2,
-    "singleQuote": false,
-    "trailingComma": "es5"
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kazupon/lerna-changelog.git"
+  },
+  "scripts": {
+    "build": "yarn clean && tsc",
+    "changelog": "node ./bin/cli.js",
+    "clean": "rimraf lib",
+    "fix": "npm-run-all --parallel lint:fix format:fix",
+    "format": "prettier --config .prettierrc --ignore-path .prettierignore '**/*.{js,json,html}'",
+    "format:fix": "yarn format --write",
+    "lint": "eslint ./src --ext .ts",
+    "lint:fix": "yarn lint --fix",
+    "prepublish": "yarn build",
+    "release:prepare": "shipjs prepare",
+    "release:trigger": "shipjs trigger",
+    "test": "jest",
+    "test-ci": "yarn build && yarn test",
+    "watch": "yarn build -- --watch"
   }
 }

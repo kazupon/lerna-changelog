@@ -1,74 +1,81 @@
-const path = require("path");
+import path from 'path'
 
-import ConfigurationError from "./configuration-error";
-import fetch from "./fetch";
+import ConfigurationError from './configuration-error'
+import fetch from './fetch'
 
 export interface GitHubUserResponse {
-  login: string;
-  name: string;
-  html_url: string;
+  login: string
+  name: string
+  html_url: string
 }
 
 export interface GitHubIssueResponse {
-  number: number;
-  title: string;
+  number: number
+  title: string
   pull_request?: {
-    html_url: string;
-  };
+    html_url: string
+  }
   labels: Array<{
-    name: string;
-  }>;
+    name: string
+  }>
   user: {
-    login: string;
-    html_url: string;
-  };
+    login: string
+    html_url: string
+  }
 }
 
 export interface Options {
-  repo: string;
-  rootPath: string;
-  cacheDir?: string;
+  repo: string
+  rootPath: string
+  cacheDir?: string
 }
 
 export default class GithubAPI {
-  private cacheDir: string | undefined;
-  private auth: string;
+  private cacheDir: string | undefined
+  private auth: string
 
   constructor(config: Options) {
-    this.cacheDir = config.cacheDir && path.join(config.rootPath, config.cacheDir, "github");
-    this.auth = this.getAuthToken();
+    this.cacheDir =
+      config.cacheDir && path.join(config.rootPath, config.cacheDir, 'github')
+    this.auth = this.getAuthToken()
     if (!this.auth) {
-      throw new ConfigurationError("Must provide GITHUB_AUTH");
+      throw new ConfigurationError('Must provide GITHUB_AUTH')
     }
   }
 
   public getBaseIssueUrl(repo: string): string {
-    return `https://github.com/${repo}/issues/`;
+    return `https://github.com/${repo}/issues/`
   }
 
-  public async getIssueData(repo: string, issue: string): Promise<GitHubIssueResponse> {
-    return this._fetch(`https://api.github.com/repos/${repo}/issues/${issue}`);
+  public async getIssueData(
+    repo: string,
+    issue: string
+  ): Promise<GitHubIssueResponse> {
+    return this._fetch(`https://api.github.com/repos/${repo}/issues/${issue}`)
   }
 
   public async getUserData(login: string): Promise<GitHubUserResponse> {
-    return this._fetch(`https://api.github.com/users/${login}`);
+    return this._fetch(`https://api.github.com/users/${login}`)
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async _fetch(url: string): Promise<any> {
     const res = await fetch(url, {
       cacheManager: this.cacheDir,
       headers: {
-        Authorization: `token ${this.auth}`,
-      },
-    });
-    const parsedResponse = await res.json();
+        Authorization: `token ${this.auth}`
+      }
+    })
+    const parsedResponse = await res.json()
     if (res.ok) {
-      return parsedResponse;
+      return parsedResponse
     }
-    throw new ConfigurationError(`Fetch error: ${res.statusText}.\n${JSON.stringify(parsedResponse)}`);
+    throw new ConfigurationError(
+      `Fetch error: ${res.statusText}.\n${JSON.stringify(parsedResponse)}`
+    )
   }
 
   private getAuthToken(): string {
-    return process.env.GITHUB_AUTH || "";
+    return process.env.GITHUB_AUTH || ''
   }
 }
