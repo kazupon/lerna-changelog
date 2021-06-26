@@ -1,7 +1,6 @@
 # :scroll: lerna-changelog
 
 [![Test](https://github.com/kazupon/lerna-changelog/actions/workflows/test.yml/badge.svg)](https://github.com/kazupon/lerna-changelog/actions/workflows/test.yml)
-[![Latest NPM release][npm-badge]][npm-badge-url]
 
 PR-based changelog generator with monorepo support
 
