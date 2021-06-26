@@ -1,19 +1,15 @@
-lerna-changelog
-==============================================================================
+# :scroll: lerna-changelog
 
-[![TravisCI Build Status][travis-badge]][travis-badge-url]
+[![Test](https://github.com/kazupon/lerna-changelog/actions/workflows/test.yml/badge.svg)](https://github.com/kazupon/lerna-changelog/actions/workflows/test.yml)
 [![Latest NPM release][npm-badge]][npm-badge-url]
-
-[npm-badge]: https://img.shields.io/npm/v/lerna-changelog.svg
-[npm-badge-url]: https://www.npmjs.com/package/lerna-changelog
-[travis-badge]: https://img.shields.io/travis/lerna/lerna-changelog/master.svg
-[travis-badge-url]: https://travis-ci.org/lerna/lerna-changelog
 
 PR-based changelog generator with monorepo support
 
+## :warning: How does it differ from Original?
+- :star: Support for generating changelog for each package.
+- :package: Node v12 or later support
 
-Install
-------------------------------------------------------------------------------
+## :cd: Installation
 
 Install with `yarn`:
 
@@ -31,9 +27,7 @@ npm install --save-dev lerna-changelog
 npm install --global lerna-changelog
 ```
 
-
-Usage
-------------------------------------------------------------------------------
+## :rocket: Usage
 
 ```bash
 $ lerna-changelog
@@ -89,8 +83,7 @@ for the GitHub API with the `repo` scope for private repositories or just
 `public_repo` scope for public repositories.
 
 
-Configuration
-------------------------------------------------------------------------------
+## Configuration
 
 You can configure `lerna-changelog` in various ways. The easiest way is by
 adding a `changelog` key to the `package.json` file of your project:
@@ -123,8 +116,10 @@ The supported options are:
 - `cacheDir`: Path to a GitHub API response cache to avoid throttling
   (e.g. `.changelog`)
 
+- `package`: The name of the package to generate a changelog for monorepo
+  (e.g. `@kazupon/lerna-changelog`)
 
-License
-------------------------------------------------------------------------------
 
-`lerna-changelog` is released under the [MIT License](LICENSE).
+## :copyright: License
+
+[MIT](http://opensource.org/licenses/MIT)
