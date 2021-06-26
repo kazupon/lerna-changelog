@@ -1,36 +1,27 @@
 {
   "name": "lerna-changelog",
-  "version": "1.0.1",
   "description": "Generate a changelog for a lerna monorepo",
-  "keywords": [
-    "changelog",
-    "lerna"
-  ],
-  "homepage": "https://github.com/kazupon/lerna-changelog#readme",
-  "bugs": {
-    "url": "https://github.com/kazupon/lerna-changelog/issues"
-  },
-  "license": "MIT",
+  "version": "1.0.1",
   "author": "Bo Borgerson <gigabo@gmail.com>",
-  "main": "index.js",
   "bin": {
     "lerna-changelog": "./bin/cli.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kazupon/lerna-changelog.git"
+  "bugs": {
+    "url": "https://github.com/kazupon/lerna-changelog/issues"
   },
-  "scripts": {
-    "build": "yarn clean && tsc",
-    "changelog": "node ./bin/cli.js",
-    "clean": "rimraf lib",
-    "fix": "yarn lint -- --fix",
-    "lint": "eslint src --ext ts --format stylish",
-    "prepublish": "yarn build",
-    "prettier": "prettier --write 'src/**/*.ts'",
-    "test": "jest",
-    "test-ci": "yarn build && yarn test",
-    "watch": "yarn build -- --watch"
+  "changelog": {
+    "labels": {
+      "Type: Feature": ":star: Features",
+      "Type: Bug": ":bug: Bug Fixes",
+      "Type: Security": ":lock: Security Fixes",
+      "Type: Performance": ":chart_with_upwards_trend: Performance Fixes",
+      "Type: Improvement": ":zap: Improvement Features",
+      "Type: Breaking": ":boom: Breaking Change",
+      "Type: Deprecated": ":warning: Deprecated Features",
+      "Type: I18n": ":globe_with_meridians: Internationalization",
+      "Type: A11y": ":wheelchair: Accessibility",
+      "Type: Documentation": ":pencil: Documentation"
+    }
   },
   "dependencies": {
     "chalk": "^2.4.1",
@@ -55,6 +46,7 @@
     "jest-runner-eslint": "^0.7.6",
     "prettier": "1.19.1",
     "rimraf": "^3.0.2",
+    "shipjs": "^0.23.3",
     "ts-jest": "^25.5.1",
     "typescript": "^4.3.4",
     "typescript-eslint-language-service": "^4.1.4"
@@ -62,20 +54,7 @@
   "engines": {
     "node": ">= 12"
   },
-  "changelog": {
-    "labels": {
-      "Type: Feature": ":star: Features",
-      "Type: Bug": ":bug: Bug Fixes",
-      "Type: Security": ":lock: Security Fixes",
-      "Type: Performance": ":chart_with_upwards_trend: Performance Fixes",
-      "Type: Improvement": ":zap: Improvement Features",
-      "Type: Breaking": ":boom: Breaking Change",
-      "Type: Deprecated": ":warning: Deprecated Features",
-      "Type: I18n": ":globe_with_meridians: Internationalization",
-      "Type: A11y": ":wheelchair: Accessibility",
-      "Type: Documentation": ":pencil: Documentation"
-    }
-  },
+  "homepage": "https://github.com/kazupon/lerna-changelog#readme",
   "jest": {
     "projects": [
       {
@@ -97,10 +76,34 @@
       }
     ]
   },
+  "keywords": [
+    "changelog",
+    "lerna"
+  ],
+  "license": "MIT",
+  "main": "index.js",
   "prettier": {
     "printWidth": 120,
     "tabWidth": 2,
     "singleQuote": false,
     "trailingComma": "es5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kazupon/lerna-changelog.git"
+  },
+  "scripts": {
+    "build": "yarn clean && tsc",
+    "changelog": "node ./bin/cli.js",
+    "clean": "rimraf lib",
+    "fix": "yarn lint -- --fix",
+    "lint": "eslint src --ext ts --format stylish",
+    "prepublish": "yarn build",
+    "prettier": "prettier --write 'src/**/*.ts'",
+    "release:prepare": "shipjs prepare",
+    "release:trigger": "shipjs trigger",
+    "test": "jest",
+    "test-ci": "yarn build && yarn test",
+    "watch": "yarn build -- --watch"
   }
 }
