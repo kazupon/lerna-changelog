@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
-const execa = require('execa')
 const hostedGitInfo = require('hosted-git-info')
+import execa from 'execa'
 
 import ConfigurationError from './configuration-error'
 
@@ -20,13 +20,12 @@ export interface ConfigLoaderOptions {
   nextVersionFromMetadata?: boolean
 }
 
-export function load(options: ConfigLoaderOptions = {}): Configuration {
+export async function load(options: ConfigLoaderOptions = {}): Promise<Configuration> {
   const cwd = process.cwd()
-  const rootPath = execa.sync('git', ['rev-parse', '--show-toplevel'], {
+  const { stdout: rootPath } = await execa('git', ['rev-parse', '--show-toplevel'], {
     cwd
-  }).stdout
-
-  return fromPath(rootPath, options)
+  })
+  return Promise.resolve(fromPath(rootPath, options))
 }
 
 export function fromPath(

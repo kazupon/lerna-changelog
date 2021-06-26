@@ -64,7 +64,7 @@ export async function run(): Promise<void> {
   }
 
   try {
-    const config = loadConfig({
+    const config = await loadConfig({
       nextVersionFromMetadata: argv['next-version-from-metadata']
     })
 
