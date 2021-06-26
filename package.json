@@ -6,9 +6,9 @@
     "changelog",
     "lerna"
   ],
-  "homepage": "https://github.com/lerna/lerna-changelog#readme",
+  "homepage": "https://github.com/kazupon/lerna-changelog#readme",
   "bugs": {
-    "url": "https://github.com/lerna/lerna-changelog/issues"
+    "url": "https://github.com/kazupon/lerna-changelog/issues"
   },
   "license": "MIT",
   "author": "Bo Borgerson <gigabo@gmail.com>",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lerna/lerna-changelog.git"
+    "url": "git+https://github.com/kazupon/lerna-changelog.git"
   },
   "scripts": {
     "build": "yarn clean && tsc",
@@ -56,7 +56,8 @@
     "prettier": "1.19.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^25.5.1",
-    "typescript": "^3.9.2"
+    "typescript": "^4.3.4",
+    "typescript-eslint-language-service": "^4.1.4"
   },
   "engines": {
     "node": ">= 12"
