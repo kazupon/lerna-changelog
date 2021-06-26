@@ -1,24 +1,23 @@
 {
-  "name": "lerna-changelog",
-  "version": "1.0.1",
+  "name": "@kazupon/lerna-changelog",
   "description": "Generate a changelog for a lerna monorepo",
-  "keywords": [
-    "changelog",
-    "lerna"
-  ],
-  "homepage": "https://github.com/lerna/lerna-changelog#readme",
+  "version": "1.0.1",
+  "author": {
+    "name": "kazuya kawaguchi",
+    "email": "kawakazu80@gmail.com"
+  },
+  "homepage": "https://github.com/kazupon/lerna-changelog#readme",
   "bugs": {
-    "url": "https://github.com/lerna/lerna-changelog/issues"
+    "url": "https://github.com/kazupon/lerna-changelog/issues"
   },
   "license": "MIT",
-  "author": "Bo Borgerson <gigabo@gmail.com>",
   "main": "index.js",
   "bin": {
     "lerna-changelog": "./bin/cli.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lerna/lerna-changelog.git"
+    "url": "git+https://github.com/kazupon/lerna-changelog.git"
   },
   "scripts": {
     "build": "npm run clean && tsc",
@@ -92,6 +91,9 @@
         ]
       }
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "prettier": {
     "printWidth": 120,
