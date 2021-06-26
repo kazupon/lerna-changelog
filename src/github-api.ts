@@ -1,4 +1,4 @@
-const path = require('path')
+import path from 'path'
 
 import ConfigurationError from './configuration-error'
 import fetch from './fetch'
@@ -58,6 +58,7 @@ export default class GithubAPI {
     return this._fetch(`https://api.github.com/users/${login}`)
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async _fetch(url: string): Promise<any> {
     const res = await fetch(url, {
       cacheManager: this.cacheDir,

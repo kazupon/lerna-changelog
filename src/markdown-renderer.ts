@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import { GitHubUserResponse } from './github-api'
 import { CommitInfo, Release } from './interfaces'
 
@@ -164,3 +166,5 @@ export default class MarkdownRenderer {
     })
   }
 }
+
+/* eslint-enable @typescript-eslint/explicit-module-boundary-types */

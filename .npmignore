@@ -3,11 +3,8 @@
 *.spec.js
 *.tgz
 .changelog/
-.dependabot/
 .editorconfig
 .idea/
-.travis.yml
 src
 tsconfig.json
-tslint.json
 yarn.lock

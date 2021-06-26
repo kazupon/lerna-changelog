@@ -3,6 +3,7 @@ import chalk from 'chalk'
 const ProgressBar = require('progress')
 
 class ProgressBarController {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private bar: any
 
   constructor() {

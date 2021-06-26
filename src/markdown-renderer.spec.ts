@@ -47,6 +47,7 @@ const COMMIT_WITH_PHAB_ISSUE_REF = {
   }
 } as CommitInfo
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function renderer(options: any = {}): MarkdownRenderer {
   return new MarkdownRenderer({
     baseIssueUrl: 'http://foo.bar/',

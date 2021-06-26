@@ -34,7 +34,7 @@ export default class Changelog {
     })
   }
 
-  public async createMarkdown(options: Options = {}) {
+  public async createMarkdown(options: Options = {}): Promise<string> {
     const from = options.tagFrom || (await Git.lastTag())
     const to = options.tagTo || 'HEAD'
 
@@ -272,6 +272,7 @@ export default class Changelog {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function onlyUnique(value: any, index: number, self: any[]): boolean {
   return self.indexOf(value) === index
 }

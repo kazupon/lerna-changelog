@@ -1,14 +1,10 @@
-/* tslint:disable:no-console */
-
 import chalk from 'chalk'
-
 import { highlight } from 'cli-highlight'
-
 import Changelog from './changelog'
 import { load as loadConfig } from './configuration'
 import ConfigurationError from './configuration-error'
 
-export async function run() {
+export async function run(): Promise<void> {
   const yargs = require('yargs')
 
   const argv = yargs

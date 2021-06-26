@@ -135,6 +135,7 @@ function findNextVersion(rootPath: string): string | undefined {
     : undefined
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
 export function findRepoFromPkg(pkg: any): string | undefined {
   const url = pkg.repository.url || pkg.repository
   const info = hostedGitInfo.fromUrl(url)

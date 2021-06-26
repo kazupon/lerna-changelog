@@ -1,4 +1,4 @@
-'use strict'
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
 type Json = { [key: string]: unknown }
 type MockResponse = {
@@ -39,3 +39,5 @@ export function __setMockResponses(newMockResponses: {
 export function __resetMockResponses() {
   __setMockResponses({})
 }
+
+/* eslint-enable @typescript-eslint/explicit-module-boundary-types */
