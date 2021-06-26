@@ -44,7 +44,7 @@
     "fs-extra": "^8.1.0",
     "jest": "^27.0.5",
     "jest-runner-eslint": "^0.10.1",
-    "prettier": "1.19.1",
+    "prettier": "2.3.2",
     "rimraf": "^3.0.2",
     "shipjs": "^0.23.3",
     "ts-jest": "^27.0.3",
@@ -82,12 +82,6 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "prettier": {
-    "printWidth": 120,
-    "tabWidth": 2,
-    "singleQuote": false,
-    "trailingComma": "es5"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kazupon/lerna-changelog.git"
