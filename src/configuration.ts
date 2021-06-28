@@ -20,11 +20,17 @@ export interface ConfigLoaderOptions {
   nextVersionFromMetadata?: boolean
 }
 
-export async function load(options: ConfigLoaderOptions = {}): Promise<Configuration> {
+export async function load(
+  options: ConfigLoaderOptions = {}
+): Promise<Configuration> {
   const cwd = process.cwd()
-  const { stdout: rootPath } = await execa('git', ['rev-parse', '--show-toplevel'], {
-    cwd
-  })
+  const { stdout: rootPath } = await execa(
+    'git',
+    ['rev-parse', '--show-toplevel'],
+    {
+      cwd
+    }
+  )
   return Promise.resolve(fromPath(rootPath, options))
 }
 
