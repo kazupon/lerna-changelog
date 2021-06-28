@@ -15,6 +15,7 @@ interface Options {
   categories: string[]
   baseIssueUrl: string
   unreleasedName: string
+  packageMode: boolean
 }
 
 export default class MarkdownRenderer {
@@ -84,10 +85,14 @@ export default class MarkdownRenderer {
     return packageNames
       .map(packageName => {
         const pkgCommits = commitsByPackage[packageName]
-        return `* ${packageName}\n${this.renderContributionList(
-          pkgCommits,
-          '  '
-        )}`
+        if (!this.options.packageMode) {
+          return `* ${packageName}\n${this.renderContributionList(
+            pkgCommits,
+            '  '
+          )}`
+        } else {
+          return this.renderContributionList(pkgCommits)
+        }
       })
       .join('\n')
   }

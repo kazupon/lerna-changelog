@@ -30,7 +30,8 @@ export default class Changelog {
         key => this.config.labels[key]
       ),
       baseIssueUrl: this.github.getBaseIssueUrl(this.config.repo),
-      unreleasedName: this.config.nextVersion || 'Unreleased'
+      unreleasedName: this.config.nextVersion || 'Unreleased',
+      packageMode: !!config.package
     })
   }
 
