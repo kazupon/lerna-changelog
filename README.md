@@ -6,7 +6,9 @@ PR-based changelog generator with monorepo support
 
 ## :warning: How does it differ from Original?
 - :star: Support for generating changelog for each package.
+- :star: `packageMode` option of `MarkdownRenderer`
 - :package: Node v12 or later support
+- :package: Expose load config API
 
 ## :cd: Installation
 
