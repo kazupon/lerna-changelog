@@ -84,6 +84,10 @@
     "type": "git",
     "url": "git+https://github.com/kazupon/lerna-changelog.git"
   },
+  "files": [
+    "bin/cli.js",
+    "lib"
+  ],
   "scripts": {
     "build": "yarn clean && tsc",
     "changelog": "node ./bin/cli.js",
