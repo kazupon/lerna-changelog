@@ -88,6 +88,13 @@
   ],
   "license": "MIT",
   "lint-staged": {
+    "*.{js,json,html}": [
+      "prettier --config .prettierrc --ignore-path .prettierignore --write"
+    ],
+    "*.ts?(x)": [
+      "eslint --fix",
+      "prettier --config .prettierrc --ignore-path .prettierignore --parser=typescript --write"
+    ],
     "*": [
       "secretlint"
     ]
