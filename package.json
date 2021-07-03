@@ -67,6 +67,9 @@
     "bin/cli.js",
     "lib"
   ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
   "homepage": "https://github.com/kazupon/lerna-changelog#readme",
   "jest": {
     "projects": [
@@ -84,6 +87,11 @@
     "lerna"
   ],
   "license": "MIT",
+  "lint-staged": {
+    "*": [
+      "secretlint"
+    ]
+  },
   "main": "index.js",
   "publishConfig": {
     "access": "public"
@@ -100,8 +108,8 @@
     "format": "prettier --config .prettierrc --ignore-path .prettierignore '**/*.{js,json,html}'",
     "format:fix": "yarn format --write",
     "lint": "npm-run-all --parallel lint:eslint lint:secret",
-    "lint:eslint:fix": "yarn lint:eslint --fix",
     "lint:eslint": "eslint ./src --ext .ts",
+    "lint:eslint:fix": "yarn lint:eslint --fix",
     "lint:secret": "npx npx secretlint \"**/*\"",
     "prepublish": "yarn build",
     "release:prepare": "shipjs prepare",
@@ -109,14 +117,6 @@
     "test": "jest",
     "test-ci": "yarn build && yarn test",
     "watch": "yarn build -- --watch"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*": [
-      "secretlint"
-    ]
   },
   "types": "lib/index.d.ts"
 }
