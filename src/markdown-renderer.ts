@@ -43,10 +43,11 @@ export default class MarkdownRenderer {
     // Skip this iteration if there are no commits available for the release
     if (categoriesWithCommits.length === 0) return ''
 
-    const releaseTitle =
-      release.name === UNRELEASED_TAG
+    const releaseTitle = !this.options.packageMode
+      ? release.name === UNRELEASED_TAG
         ? this.options.unreleasedName
         : release.name
+      : this.options.unreleasedName
 
     let markdown = `## ${releaseTitle} (${release.date})`
 
