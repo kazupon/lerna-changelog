@@ -107,7 +107,8 @@
     "release:trigger": "shipjs trigger",
     "test": "jest",
     "test-ci": "yarn build && yarn test",
-    "watch": "yarn build -- --watch"
+    "watch": "yarn build -- --watch",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
