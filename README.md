@@ -1,5 +1,6 @@
 # :scroll: lerna-changelog
 
+[![Lint](https://github.com/kazupon/lerna-changelog/actions/workflows/lint.yml/badge.svg)](https://github.com/kazupon/lerna-changelog/actions/workflows/lint.yml)
 [![Test](https://github.com/kazupon/lerna-changelog/actions/workflows/test.yml/badge.svg)](https://github.com/kazupon/lerna-changelog/actions/workflows/test.yml)
 
 PR-based changelog generator with monorepo support
